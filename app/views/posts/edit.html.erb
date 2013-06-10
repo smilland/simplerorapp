@@ -1,0 +1,27 @@
+<h1>Edit The Post</h1>
+<% if @post.errors.any? %>
+<h2>Error:</h2>
+<ul>
+	<% @post.errors.full_messages.each do |err| %>
+	<li><%=err %></li>
+	<% end %>
+</ul>
+<% end %>
+<%= form_for @post do |f| %>
+<p>
+	<%= f.label :title %><br>
+	<%= f.text_field :title %>
+</p>
+<p>
+	<%= f.label :content %><br>
+	<%= f.text_area :content %>
+</p>
+<p>
+	<%= f.label :auther %><br>
+	<%= f.text_field :auther %>
+</p>
+<p>
+
+	<%= f.submit "Save the change" %>
+	</p>
+<% end %>
