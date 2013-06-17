@@ -4,10 +4,29 @@
   <h1>Hello, Welcome to My Blog Station.</h1>
   <p>This is a simple blog station that contains simple blogs information. It is build for testing the responsive css in Ruby on Rails</p>
   <p>
-    <a class="btn btn-inverse btn-large">
+    <!-- Button to trigger modal -->
+    <a href="#myModal" role="button" class="btn btn-inverse btn-large" data-toggle="modal">
       Learn more
     </a>
   </p>
+  <!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h2 id="myModalLabel">About this website</h2>
+  </div>
+  <div class="modal-body">
+    <h3>Website Purpose</h4>
+    <p>The purpose of this website is for testing the responsive css implementation in Ruby on Rails.</p>
+    <hr>
+    <h3>Website Info</h4>
+    <p>Owner: Hang Li</p>
+    <p>Date Updated: June 10, 2013</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
   <br>
   <div id="myCarousel" class="carousel slide">
   <ol class="carousel-indicators">

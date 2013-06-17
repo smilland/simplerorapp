@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= full_title(yield(:page_title)) %></title>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "dataTables", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+   <%= stylesheet_link_tag   "bootstrap-responsive", :media => "all" %>
+
+  <%= javascript_include_tag "bootstrap" %>
+  <%= javascript_include_tag "application" %>
+   <%= javascript_include_tag "jquery" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a href="#" class="brand">My Blogs</a>
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+			<div class="nav-collapse collapse">
+      <ul class="nav nav-pills pull-right">
+  <li class="active"><%= link_to "Home",home_index_path %></li>
+  <li><%= link_to "Posts",posts_path %></li>
+  <li><a href="#" id="pop" data-toggle="popover" data-placement="bottom" data-content="Hang Li, intern in Genentech. lih69@gene.com." data-original-title="Contact Information">Contact</a>
+  </li>
+</ul>
+      </div>
+		</div>
+</div>
+</div>
+<%= yield %>
+<% flash.each do |key, value| %>
+<div class="container">
+<div class="alert alert-info">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Notification!</strong> <p><%= value %></p>
+    
+</div>
+</div>
+
+<% end %>
+
+
+
+
+</body>
+</html>

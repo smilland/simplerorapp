@@ -1,6 +1,9 @@
-<h1>Edit The Post</h1>
+<% provide(:page_title, 'Post_Edit') %>
+<div class="hero-unit-trans" >
+
+<h2>Edit The Post</h2>
 <% if @post.errors.any? %>
-<h2>Error:</h2>
+<p>Error:</p>
 <ul>
 	<% @post.errors.full_messages.each do |err| %>
 	<li><%=err %></li>
@@ -8,20 +11,36 @@
 </ul>
 <% end %>
 <%= form_for @post do |f| %>
-<p>
-	<%= f.label :title %><br>
-	<%= f.text_field :title %>
-</p>
-<p>
-	<%= f.label :content %><br>
-	<%= f.text_area :content %>
-</p>
-<p>
-	<%= f.label :auther %><br>
-	<%= f.text_field :auther %>
-</p>
-<p>
+<div class="control-group">
+	
+	<%= f.label "Title", :class =>"control-label", :for=>"inputTitle" %>
+	 <div class="controls">
+	<%= f.text_field :title, :id=>"inputTitle" %>
+</div>
+</div>
+<div class="control-group">
+	<%= f.label "Content", :class =>"control-label", :for=>"inputContent" %>
+	 <div class="controls">
+	<%= f.text_area :content,:rows=>"3", :id=>"inputContent" %>
+</div>
+</div>
+<div class="control-group">
+	<%= f.label "Author", :class =>"control-label", :for=>"inputAuthor" %>
+	 <div class="controls">
+	<%= f.text_field :auther,:id=>"inputAuthor" %>
 
-	<%= f.submit "Save the change" %>
-	</p>
+
+</div>
+
+
+</div>
+<div class="control-group">
+ <div class="controls">
+ 	<%= f.submit "Save the change", :class=>"btn btn-inverse" %>
+	</div>
+</div>
+
 <% end %>
+
+
+	</div>

@@ -1,27 +1,56 @@
-<h1>Add a new post here!</h1>
-<%= form_for @post do |f| %>
+<% provide(:page_title, 'Post_Create') %>
+<div class="hero-unit-trans" >
+
+<h2>Create a New Post</h2>
 <% if @post.errors.any? %>
-<h2>Error:</h2>
+<% @notice="Error:" %>
+<% @post.errors.full_messages.each do |err| %>
+	<% @notice=@notice+"\n"+err %>
+	<% end %>
+<!--
+<p>Error:</p>
 <ul>
 	<% @post.errors.full_messages.each do |err| %>
 	<li><%=err %></li>
 	<% end %>
 </ul>
+-->
 <% end %>
-<p>
-	<%= f.label :title %><br>
-	<%= f.text_field :title %>
-</p>
-<p>
-	<%= f.label :content %><br>
-	<%= f.text_area :content %>
-</p>
-<p>
-	<%= f.label :auther %><br>
-	<%= f.text_field :auther %>
-</p>
-<p>
+<%= form_for @post do |f| %>
+<div class="control-group">
+	<div class="row-fluid">
+	<%= f.label "Title", :class =>"control-label", :for=>"inputTitle" %>
+	 <div class="controls">
+	<%= f.text_field :title, :id=>"inputTitle" %>
+</div>
+</div>
+</div>
+<div class="control-group">
+	<div class="row-fluid">
+	<%= f.label "Content", :class =>"control-label", :for=>"inputContent" %>
+	 <div class="controls">
+	<%= f.text_area :content,:rows=>"3", :id=>"inputContent" %>
+</div>
+</div>
+</div>
+<div class="control-group">
+	<div class="row-fluid">
+	<%= f.label "Author", :class =>"control-label", :for=>"inputAuthor" %>
+	 <div class="controls">
+	<%= f.text_field :auther,:id=>"inputAuthor" %>
+</div>
 
-	<%= f.submit "Submit a new post" %>
-	</p>
-	<% end %>
+</div>
+
+
+</div>
+<div class="control-group">
+ <div class="controls">
+ 	<%= f.submit "Create a new post", :class=>"btn btn-inverse"%>
+	</div>
+</div>
+
+<% end %>
+
+
+	</div>

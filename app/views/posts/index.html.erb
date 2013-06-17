@@ -1,13 +1,31 @@
+<% provide(:page_title, 'Post_Home') %>
+<div class="hero-unit2">
+<div class="container">
+<h1>Blog Indexes</h1>
+<div class="container">
+<%= link_to(new_post_path, :class => 'btn btn-inverse pull-right',:remote=>true, :id =>"create_post") do %>
+  <i class="icon-plus icon-white"> </i> Add a new post!
+<% end %>
+</div>
+<br>
+<div class="container2">
 
-<h1>This is my blogs!</h1>
-
-<table>
-	<th>Title</th><th>Content</th><th>Author</th><th></th>
+<table class="table  table-bordered table-hover dataTable">
+	<th>ID</th><th>Title</th><th>Content</th><th>Author</th><th></th>
 	<% @posts.each do |post| %>
-	<tr><td><%= link_to post.title,post %></td><td><%= post.content %></td><td><%= post.auther %></td>
-		<td><%= link_to "Edit",edit_post_path(post) %>
-		| <%= link_to "Delete",post, :confirm=>"Are you sure?", :method=>:delete %></td></tr>
+	<tr><td><%= post.id %></td><td><%= link_to post.title,post, :remote =>true, :class => "show_post" %></td><td><%= post.content %></td><td><%= post.auther %></td>
+		<td><%= link_to(edit_post_path(post), :class =>'btn btn-inverse edit_post',:remote=>true, :id=>"edit_post") do %> <i class="icon-pencil icon-white"> </i> <% end %>
+		</td><td><%= link_to(post, :confirm=>"Are you sure?", :method=>:delete, :class =>'btn btn-inverse') do %> <i class="icon-trash icon-white"> </i> <% end %> </td></tr>
 	<% end %>
 </table>
-<p><%= link_to "Add a new post", new_post_path %></p>
+<!--<%= will_paginate @posts %>-->
+
+        <%= will_paginate @posts, :class =>'apple_pagination' %>
+
+</div>
+<div id="ajax_content">
+
+</div>
+</div>
+
 
